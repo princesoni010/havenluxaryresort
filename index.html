@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HAVEN — Where every moment feels like home. A luxury resort and fine dining destination offering curated stays, world-class cuisine, and unforgettable experiences.">
+  <meta name="keywords" content="luxury resort, fine dining, boutique hotel, premium stays, wellness spa, curated experiences">
+  <meta name="author" content="HAVEN">
+  <title>HAVEN — Luxury Resort & Fine Dining</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- GSAP + Plugins -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+
+  <!-- Main Script -->
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CUSTOM CURSOR                               -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="custom-cursor" id="customCursor">
+    <div class="cursor-cross"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PRELOADER                                   -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-text" id="preloaderText">
+        <span>H</span><span>A</span><span>V</span><span>E</span><span>N</span>
+      </div>
+      <div class="preloader-line" id="preloaderLine"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- NAVBAR                                      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="#stays" class="nav-link">Stays</a>
+        <a href="#dining" class="nav-link">Dining</a>
+        <a href="#experiences" class="nav-link">Experiences</a>
+      </div>
+      <a href="#" class="nav-logo">HAVEN</a>
+      <div class="nav-right">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#contact" class="nav-link reserve-btn">Reserve →</a>
+      </div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+      <a href="#stays" class="mobile-menu-link">Stays</a>
+      <a href="#dining" class="mobile-menu-link">Dining</a>
+      <a href="#experiences" class="mobile-menu-link">Experiences</a>
+      <a href="#about" class="mobile-menu-link">About</a>
+      <a href="#contact" class="mobile-menu-link">Contact</a>
+      <a href="#contact" class="mobile-menu-link reserve-btn-mobile">Reserve →</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- HERO SECTION — Populous Style Carousel      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-slider" id="heroSlider">
+      <div class="hero-slide active" data-index="0">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=85" alt="Luxury resort infinity pool with mountain view at sunset" loading="eager">
+      </div>
+      <div class="hero-slide" data-index="1">
+        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1920&q=85" alt="Elegant fine dining restaurant with ambient lighting" loading="eager">
+      </div>
+      <div class="hero-slide" data-index="2">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920&q=85" alt="Luxurious hotel suite with panoramic ocean view" loading="eager">
+      </div>
+    </div>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <span class="hero-label">↳ Luxury Hospitality</span>
+      <h1 class="hero-title">
+        <span class="title-line">Where every moment</span>
+        <span class="title-line">feels like home.</span>
+      </h1>
+      <div class="hero-buttons">
+        <a href="#stays" class="btn btn-outline">Explore Stays →</a>
+        <a href="#contact" class="btn btn-filled">Reserve Now</a>
+      </div>
+    </div>
+
+    <div class="hero-arrows">
+      <button class="hero-arrow hero-prev" id="heroPrev" aria-label="Previous slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+      <button class="hero-arrow hero-next" id="heroNext" aria-label="Next slide">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="hero-slide-counter">
+      <span class="counter-current" id="counterCurrent">01</span>
+      <span class="counter-sep">/</span>
+      <span class="counter-total">03</span>
+    </div>
+
+    <div class="scroll-indicator" id="scrollIndicator">
+      <span class="scroll-text">Scroll</span>
+      <div class="scroll-line">
+        <div class="scroll-line-inner"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- MARQUEE                                     -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="marquee" id="marquee">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>Fine Dining</span>
+        <span class="marquee-dot">·</span>
+        <span>Luxury Stays</span>
+        <span class="marquee-dot">·</span>
+        <span>Private Events</span>
+        <span class="marquee-dot">·</span>
+        <span>Spa &amp; Wellness</span>
+        <span class="marquee-dot">·</span>
+        <span>Curated Experiences</span>
+        <span class="marquee-dot">·</span>
+        <span>Premium Service</span>
+        <span class="marquee-dot">·</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span>Fine Dining</span>
+        <span class="marquee-dot">·</span>
+        <span>Luxury Stays</span>
+        <span class="marquee-dot">·</span>
+        <span>Private Events</span>
+        <span class="marquee-dot">·</span>
+        <span>Spa &amp; Wellness</span>
+        <span class="marquee-dot">·</span>
+        <span>Curated Experiences</span>
+        <span class="marquee-dot">·</span>
+        <span>Premium Service</span>
+        <span class="marquee-dot">·</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- ABOUT SECTION — Dark, Aupale Inspired       -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="about section-dark" id="about">
+    <div class="about-container">
+      <div class="about-left">
+        <div class="gold-line"></div>
+        <blockquote class="about-quote">
+          "We don't just offer stays.<br>
+          We craft memories."
+        </blockquote>
+        <p class="about-text">
+          Nestled between the mountains and the sea, HAVEN is a sanctuary for those who seek the extraordinary. Every detail — from hand-selected linens to locally sourced cuisine — has been thoughtfully curated to create moments that linger long after you leave.
+        </p>
+        <a href="#stays" class="btn btn-outline btn-outline-light">Discover More →</a>
+      </div>
+      <div class="about-right">
+        <div class="about-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=85" alt="Elegant resort corridor with warm ambient lighting" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- STAYS / ROOMS SECTION                       -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="stays" id="stays">
+    <div class="stays-header">
+      <span class="section-label">↳ Accommodation</span>
+      <h2 class="section-title">Our Spaces</h2>
+    </div>
+    <div class="stays-track-wrapper">
+      <div class="stays-track" id="staysTrack">
+        <div class="stay-card" data-stay="0">
+          <div class="stay-image">
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d955c4644?w=800&q=85" alt="The Garden Suite — lush interior with garden views" loading="lazy">
+          </div>
+          <div class="stay-info">
+            <h3 class="stay-name">The Garden Suite</h3>
+            <span class="stay-price">From ₹12,000 / night</span>
+            <span class="stay-arrow">→</span>
+          </div>
+        </div>
+        <div class="stay-card" data-stay="1">
+          <div class="stay-image">
+            <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=85" alt="The Clifftop Villa — stunning cliffside villa with ocean panorama" loading="lazy">
+          </div>
+          <div class="stay-info">
+            <h3 class="stay-name">The Clifftop Villa</h3>
+            <span class="stay-price">From ₹25,000 / night</span>
+            <span class="stay-arrow">→</span>
+          </div>
+        </div>
+        <div class="stay-card" data-stay="2">
+          <div class="stay-image">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=85" alt="The Heritage Room — classic heritage room with antique furnishings" loading="lazy">
+          </div>
+          <div class="stay-info">
+            <h3 class="stay-name">The Heritage Room</h3>
+            <span class="stay-price">From ₹8,500 / night</span>
+            <span class="stay-arrow">→</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- DINING SECTION — Full Bleed Populous Style  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="dining" id="dining">
+    <div class="dining-bg">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&q=85" alt="Exquisite fine dining setup with candlelight ambiance" loading="lazy">
+    </div>
+    <div class="dining-overlay"></div>
+    <div class="dining-content">
+      <span class="section-label section-label-light">↳ Culinary Excellence</span>
+      <h2 class="dining-title">
+        <span class="title-line">An unforgettable</span>
+        <span class="title-line">dining experience.</span>
+      </h2>
+      <div class="dining-links">
+        <a href="#" class="dining-link">↳ View Menu</a>
+        <span class="dining-link-sep">|</span>
+        <a href="#contact" class="dining-link">↳ Reserve Table</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- EXPERIENCES SECTION                         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="experiences" id="experiences">
+    <div class="experiences-container">
+      <div class="experiences-header">
+        <span class="section-label">↳ Discover</span>
+        <h2 class="section-title">Curated Experiences</h2>
+      </div>
+      <div class="experiences-grid">
+        <article class="experience-item">
+          <div class="experience-image">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=85" alt="Sunset terrace event with ocean backdrop" loading="lazy">
+          </div>
+          <div class="experience-divider"></div>
+          <div class="experience-info">
+            <h3 class="experience-name">Sunset Terrace Events</h3>
+            <p class="experience-desc">Host intimate gatherings as the sun dips below the horizon.</p>
+            <span class="experience-arrow">→</span>
+          </div>
+        </article>
+        <article class="experience-item">
+          <div class="experience-image">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=85" alt="Spa and wellness treatment in serene setting" loading="lazy">
+          </div>
+          <div class="experience-divider"></div>
+          <div class="experience-info">
+            <h3 class="experience-name">Spa &amp; Wellness</h3>
+            <p class="experience-desc">Rejuvenate your senses with bespoke wellness rituals.</p>
+            <span class="experience-arrow">→</span>
+          </div>
+        </article>
+        <article class="experience-item">
+          <div class="experience-image">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=85" alt="Curated local tour through scenic mountain landscape" loading="lazy">
+          </div>
+          <div class="experience-divider"></div>
+          <div class="experience-info">
+            <h3 class="experience-name">Curated Local Tours</h3>
+            <p class="experience-desc">Explore hidden gems with our expert local guides.</p>
+            <span class="experience-arrow">→</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- STATS BAR — Aupale Style                    -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="stats section-dark" id="stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number" data-target="12">0</span>
+        <span class="stat-label">Luxury Suites</span>
+      </div>
+      <div class="stat-separator"></div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="1">0</span>
+        <span class="stat-label">Fine Dining Restaurant</span>
+      </div>
+      <div class="stat-separator"></div>
+      <div class="stat-item">
+        <span class="stat-number-text">5★</span>
+        <span class="stat-label">Guest Rating</span>
+      </div>
+      <div class="stat-separator"></div>
+      <div class="stat-item">
+        <span class="stat-number-text">Since</span>
+        <span class="stat-number" data-target="2018">0</span>
+        <span class="stat-label stat-label-hidden">Established</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- TESTIMONIALS                                -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-container">
+      <div class="quote-decoration">"</div>
+      <div class="testimonials-slider" id="testimonialsSlider">
+        <div class="testimonial active" data-testimonial="0">
+          <blockquote class="testimonial-quote">
+            HAVEN redefined what luxury means to us.
+          </blockquote>
+          <p class="testimonial-author">— Priya &amp; Arjun, Mumbai</p>
+        </div>
+        <div class="testimonial" data-testimonial="1">
+          <blockquote class="testimonial-quote">
+            A stay that touched our souls. Absolute perfection in every detail.
+          </blockquote>
+          <p class="testimonial-author">— James &amp; Sarah, London</p>
+        </div>
+        <div class="testimonial" data-testimonial="2">
+          <blockquote class="testimonial-quote">
+            The dining alone is worth the journey. We'll return every year.
+          </blockquote>
+          <p class="testimonial-author">— Kenji Watanabe, Tokyo</p>
+        </div>
+      </div>
+      <div class="testimonial-dots" id="testimonialDots">
+        <button class="testimonial-dot active" data-dot="0" aria-label="Testimonial 1"></button>
+        <button class="testimonial-dot" data-dot="1" aria-label="Testimonial 2"></button>
+        <button class="testimonial-dot" data-dot="2" aria-label="Testimonial 3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GALLERY — Aupale Inspired, Dark             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="gallery section-dark" id="gallery">
+    <div class="gallery-header">
+      <span class="section-label section-label-light">↳ Visual Journey</span>
+      <h2 class="section-title section-title-light">Gallery</h2>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item gallery-item-tall">
+        <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=85" alt="Grand hotel lobby with chandelier" loading="lazy">
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=85" alt="Infinity pool overlooking ocean at dusk" loading="lazy">
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=85" alt="Gourmet dish artfully plated" loading="lazy">
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item gallery-item-wide">
+        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=85" alt="Resort spa with natural stone elements" loading="lazy">
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=85" alt="Resort exterior at golden hour" loading="lazy">
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=85" alt="Luxury villa bedroom with warm tones" loading="lazy">
+        <div class="gallery-overlay"><span>View</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Gallery fullscreen view">
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CONTACT / RESERVE                           -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="contact" id="contact">
+    <div class="contact-left">
+      <div class="contact-left-inner">
+        <span class="section-label section-label-light">↳ Get in Touch</span>
+        <h2 class="contact-title">
+          <span>Begin your</span>
+          <span class="contact-title-accent">HAVEN</span>
+          <span>experience.</span>
+        </h2>
+        <div class="contact-info">
+          <a href="tel:+911234567890" class="contact-info-item">
+            <span class="contact-icon">☎</span>
+            <span>+91 123 456 7890</span>
+          </a>
+          <a href="mailto:hello@haven.com" class="contact-info-item">
+            <span class="contact-icon">✉</span>
+            <span>hello@haven.com</span>
+          </a>
+          <a href="https://wa.me/911234567890" class="contact-info-item whatsapp-btn" target="_blank" rel="noopener noreferrer">
+            <span class="contact-icon">💬</span>
+            <span>WhatsApp Us</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="contact-right-inner">
+        <h3 class="form-title">Request Reservation</h3>
+        <form class="reservation-form" id="reservationForm">
+          <div class="form-group">
+            <label for="guestName">Full Name</label>
+            <input type="text" id="guestName" name="guestName" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="guestEmail">Email</label>
+            <input type="email" id="guestEmail" name="guestEmail" placeholder="your@email.com" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkIn">Check-in</label>
+              <input type="date" id="checkIn" name="checkIn" required>
+            </div>
+            <div class="form-group">
+              <label for="checkOut">Check-out</label>
+              <input type="date" id="checkOut" name="checkOut" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="guests">Guests</label>
+            <select id="guests" name="guests" required>
+              <option value="" disabled selected>Number of guests</option>
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4 Guests</option>
+              <option value="5+">5+ Guests</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="specialRequests">Special Requests</label>
+            <textarea id="specialRequests" name="specialRequests" rows="3" placeholder="Any special requirements..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-filled btn-submit">Request Reservation →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FOOTER                                      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <footer class="footer" id="footer">
+    <div class="footer-separator"></div>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <a href="#" class="footer-logo">HAVEN</a>
+        <p class="footer-tagline">Luxury Redefined.</p>
+      </div>
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4 class="footer-col-title">Explore</h4>
+          <a href="#stays" class="footer-link">Our Spaces</a>
+          <a href="#dining" class="footer-link">Dining</a>
+          <a href="#experiences" class="footer-link">Experiences</a>
+          <a href="#gallery" class="footer-link">Gallery</a>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Connect</h4>
+          <a href="#" class="footer-link">Instagram</a>
+          <a href="#" class="footer-link">Facebook</a>
+          <a href="#" class="footer-link">Twitter</a>
+          <a href="#" class="footer-link">LinkedIn</a>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-col-title">Visit</h4>
+          <p class="footer-address">123 Coastal Highway<br>Goa, India 403001</p>
+          <a href="tel:+911234567890" class="footer-link">+91 123 456 7890</a>
+          <a href="mailto:hello@haven.com" class="footer-link">hello@haven.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 HAVEN. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
