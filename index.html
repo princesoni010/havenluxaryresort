@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 
   <!-- GSAP + Plugins -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
@@ -24,7 +24,7 @@
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
 
   <!-- Main Script -->
-  <script src="main.js" defer></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
 
@@ -89,13 +89,19 @@
   <section class="hero" id="hero">
     <div class="hero-slider" id="heroSlider">
       <div class="hero-slide active" data-index="0">
-        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=85" alt="Luxury resort infinity pool with mountain view at sunset" loading="eager">
+        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=85&w=1920" alt="Iconic premium resort exterior and grand pool at night" loading="eager">
       </div>
       <div class="hero-slide" data-index="1">
-        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1920&q=85" alt="Elegant fine dining restaurant with ambient lighting" loading="eager">
+        <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=85&w=1920" alt="Luxury resort infinity pool overlooking ocean at dusk" loading="eager">
       </div>
       <div class="hero-slide" data-index="2">
-        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920&q=85" alt="Luxurious hotel suite with panoramic ocean view" loading="eager">
+        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=85&w=1920" alt="Premium luxury resort suite with panoramic view" loading="eager">
+      </div>
+      <div class="hero-slide" data-index="3">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=85&w=1920" alt="Breathtaking mountain resort architecture and pool" loading="lazy">
+      </div>
+      <div class="hero-slide" data-index="4">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=85&w=1920" alt="Incredible tropical luxury resort evening" loading="lazy">
       </div>
     </div>
 
@@ -129,7 +135,7 @@
     <div class="hero-slide-counter">
       <span class="counter-current" id="counterCurrent">01</span>
       <span class="counter-sep">/</span>
-      <span class="counter-total">03</span>
+      <span class="counter-total">05</span>
     </div>
 
     <div class="scroll-indicator" id="scrollIndicator">
@@ -201,43 +207,65 @@
   </section>
 
   <!-- ═══════════════════════════════════════════ -->
-  <!-- STAYS / ROOMS SECTION                       -->
+  <!-- STAYS / ROOMS SECTION — Storytelling Style    -->
   <!-- ═══════════════════════════════════════════ -->
   <section class="stays" id="stays">
     <div class="stays-header">
       <span class="section-label">↳ Accommodation</span>
       <h2 class="section-title">Our Spaces</h2>
     </div>
-    <div class="stays-track-wrapper">
-      <div class="stays-track" id="staysTrack">
-        <div class="stay-card" data-stay="0">
-          <div class="stay-image">
-           <img src="https://images.unsplash.com/photo-1618773928121-c3724bd47801?w=800&q=85" alt="The Garden Suite — lush interior with garden views" loading="eager">
-          </div>
-          <div class="stay-info">
-            <h3 class="stay-name">The Garden Suite</h3>
+    
+    <div class="story-stays">
+      <!-- Story Item 1 -->
+      <div class="story-stay-item">
+        <div class="story-stay-content">
+          <span class="stay-number">01</span>
+          <h3 class="stay-title">The Garden Suite</h3>
+          <p class="stay-description">Step into a verdant oasis where time slows down. The Garden Suite invites you to reconnect with nature, featuring a private courtyard, outdoor soaking tub, and floor-to-ceiling windows that blur the lines between indoors and out.</p>
+          <div class="stay-meta">
             <span class="stay-price">From ₹12,000 / night</span>
-            <span class="stay-arrow">→</span>
+            <a href="#contact" class="stay-explore">Reserve Space →</a>
           </div>
         </div>
-        <div class="stay-card" data-stay="1">
-          <div class="stay-image">
-            <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?w=800&q=85" alt="The Clifftop Villa — stunning cliffside villa with ocean panorama" loading="lazy">
+        <div class="story-stay-image">
+          <div class="image-reveal">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=85&w=1200" alt="The Garden Suite — A sanctuary of tranquility" loading="lazy">
           </div>
-          <div class="stay-info">
-            <h3 class="stay-name">The Clifftop Villa</h3>
+        </div>
+      </div>
+
+      <!-- Story Item 2 -->
+      <div class="story-stay-item reverse">
+        <div class="story-stay-content">
+          <span class="stay-number">02</span>
+          <h3 class="stay-title">The Clifftop Villa</h3>
+          <p class="stay-description">Suspended between the sky and the sea. This exclusive sanctuary offers panoramic ocean vistas, a private infinity pool, and expansive living spaces designed for absolute privacy and serenity.</p>
+          <div class="stay-meta">
             <span class="stay-price">From ₹25,000 / night</span>
-            <span class="stay-arrow">→</span>
+            <a href="#contact" class="stay-explore">Reserve Space →</a>
           </div>
         </div>
-        <div class="stay-card" data-stay="2">
-          <div class="stay-image">
-            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=85" alt="The Heritage Room — classic heritage room with antique furnishings" loading="lazy">
+        <div class="story-stay-image">
+          <div class="image-reveal">
+            <img src="https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&q=85&w=1200" alt="The Clifftop Villa — stunning cliffside villa with ocean panorama" loading="lazy">
           </div>
-          <div class="stay-info">
-            <h3 class="stay-name">The Heritage Room</h3>
+        </div>
+      </div>
+
+      <!-- Story Item 3 -->
+      <div class="story-stay-item">
+        <div class="story-stay-content">
+          <span class="stay-number">03</span>
+          <h3 class="stay-title">The Heritage Room</h3>
+          <p class="stay-description">A tribute to timeless elegance. Rich mahogany furnishings, curated vintage art, and warm ambient lighting create an atmosphere of classic luxury reminiscent of a bygone era.</p>
+          <div class="stay-meta">
             <span class="stay-price">From ₹8,500 / night</span>
-            <span class="stay-arrow">→</span>
+            <a href="#contact" class="stay-explore">Reserve Space →</a>
+          </div>
+        </div>
+        <div class="story-stay-image">
+          <div class="image-reveal">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=85&w=1200" alt="The Heritage Room — classic heritage room with antique furnishings" loading="lazy">
           </div>
         </div>
       </div>
