@@ -542,38 +542,66 @@
     }
   }
 
-  // --- 11b. STAYS SECTION ---
+  // --- 11b. STAYS SECTION (Storytelling Animation) ---
   function animateStays() {
     try {
       const section = $('#stays');
       if (!section) return;
 
       const header = $('.stays-header', section);
-      const cards = $$('.stay-card', section);
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 80%',
-          once: true,
-        },
-        defaults: { ease: 'power3.out' },
-      });
-
       if (header) {
-        gsap.set(header, { opacity: 0, x: -50 });
-        tl.to(header, { opacity: 1, x: 0, duration: 0.8 });
+        gsap.fromTo(header,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+            scrollTrigger: { trigger: header, start: 'top 85%' }
+          }
+        );
       }
 
-      if (cards.length) {
-        gsap.set(cards, { opacity: 0, y: 60 });
-        tl.to(cards, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.2,
-        }, '-=0.3');
-      }
+      const items = $$('.story-stay-item', section);
+      items.forEach((item) => {
+        const content = $('.story-stay-content', item);
+        const img = $('.image-reveal img', item);
+        const reveal = $('.image-reveal', item);
+
+        // Content fade in
+        gsap.fromTo(content,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 75%',
+            }
+          }
+        );
+
+        // Image reveal & parallax
+        if (reveal && img) {
+          gsap.fromTo(reveal,
+            { clipPath: 'inset(10% 10% 10% 10%)', opacity: 0 },
+            {
+              clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, duration: 1.2, ease: 'power3.inOut',
+              scrollTrigger: {
+                trigger: item,
+                start: 'top 75%',
+              }
+            }
+          );
+
+          gsap.to(img, {
+            yPercent: 10,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1,
+            }
+          });
+        }
+      });
     } catch (e) {
       console.warn('HAVEN: Stays animation failed —', e);
     }
@@ -1056,6 +1084,25 @@
       console.warn('HAVEN: Reveal animations failed —', e);
     }
   }
+
+
+  // Add this inside your main.js init() function
+function initStorytellingReveal() {
+  const sections = $$('section');
+  sections.forEach(section => {
+    gsap.from(section, {
+      opacity: 0,
+      y: 100,
+      duration: 1.5,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      }
+    });
+  });
+}
 
 
   /* ═══════════════════════════════════════════════
