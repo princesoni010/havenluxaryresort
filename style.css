@@ -63,6 +63,21 @@
   box-sizing: border-box;
 }
 
+
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity: 0.05; /* Very subtle */
+  pointer-events: none;
+  z-index: 9999;
+}
+
 html {
   scroll-behavior: auto; /* Lenis handles smooth scroll */
   -webkit-font-smoothing: antialiased;
@@ -950,85 +965,124 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.1;
 }
 
-.stays-track-wrapper {
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding: 0 clamp(var(--space-md), 5vw, var(--space-3xl));
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.stays-track-wrapper::-webkit-scrollbar {
-  display: none;
-}
-
-.stays-track {
+.story-stays {
   display: flex;
-  gap: clamp(var(--space-md), 2vw, var(--space-lg));
-  padding-bottom: var(--space-sm);
+  flex-direction: column;
+  gap: clamp(var(--space-2xl), 10vw, var(--space-4xl));
+  padding: 0 clamp(var(--space-md), 5vw, var(--space-3xl));
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
-.stay-card {
-  flex: 0 0 clamp(320px, 30vw, 440px);
-  position: relative;
-  transition: transform var(--transition-medium);
+.story-stay-item {
+  display: flex;
+  align-items: center;
+  gap: clamp(var(--space-lg), 8vw, var(--space-2xl));
 }
 
-.stay-card:hover {
-  transform: translateY(-4px);
+.story-stay-item.reverse {
+  flex-direction: row-reverse;
 }
 
-.stay-image {
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-  position: relative;
+.story-stay-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.stay-number {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: var(--color-gold);
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.stay-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 300;
+  color: var(--color-text);
+  line-height: 1.1;
   margin-bottom: var(--space-md);
 }
 
-.stay-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s var(--ease-out-expo);
+.stay-description {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--color-muted);
+  margin-bottom: var(--space-lg);
 }
 
-.stay-card:hover .stay-image img {
-  transform: scale(1.06);
-}
-
-.stay-info {
+.stay-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-sm);
-  padding: 0 var(--space-xs);
-}
-
-.stay-name {
-  font-family: var(--font-heading);
-  font-size: clamp(1.3rem, 2vw, 1.6rem);
-  font-weight: 400;
-  color: var(--color-text);
+  border-top: 1px solid rgba(var(--color-dark-rgb), 0.1);
+  padding-top: var(--space-md);
 }
 
 .stay-price {
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--color-text);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.stay-explore {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
   font-weight: 400;
   color: var(--color-gold);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: opacity var(--transition-fast);
 }
 
-.stay-arrow {
-  font-size: 1.2rem;
-  color: var(--color-gold);
-  transition: transform var(--transition-fast);
-  flex-shrink: 0;
+.stay-explore:hover {
+  opacity: 0.7;
 }
 
-.stay-card:hover .stay-arrow {
-  transform: translateX(4px);
+.story-stay-image {
+  flex: 1.2;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-reveal {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.image-reveal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.15); /* For parallax */
+  will-change: transform;
+}
+
+@media (max-width: 900px) {
+  .story-stay-item,
+  .story-stay-item.reverse {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .story-stay-image {
+    width: 100%;
+    margin-top: var(--space-md);
+  }
+  .stay-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
 }
 
 
